@@ -24,11 +24,14 @@ native_agent_project/
 │   ├── rag_core_concepts.md            # RAG核心概念复习
 │   ├── agent_core_concepts.md          # Agent核心运行机制
 │   ├── questions_and_answers.md        # 学习过程中问过的问题
+│   ├── learning_journal.md              # 跨设备学习路线与故障记录
 │   └── interview_checklist.md          # 实习面试自检
 ├── .github/workflows/tests.yml         # GitHub自动测试
 ├── .env.example                        # 环境变量示例，不含真实Key
 └── requirements.txt
 ```
+
+跨设备复习可以从 [RAG 与 Agent 学习日志](docs/learning_journal.md) 开始，再按链接进入各专题文档。
 
 ## 创建环境
 
