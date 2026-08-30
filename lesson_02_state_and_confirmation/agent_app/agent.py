@@ -41,12 +41,12 @@ class AgentRunResult:
     steps: int
 
 
-def _new_state(session_id):
+def _new_state(session_id, system_prompt=SYSTEM_PROMPT):
     """创建可被 JSON 序列化的初始状态。"""
 
     return {
         "session_id": session_id,
-        "messages": [{"role": "system", "content": SYSTEM_PROMPT}],
+        "messages": [{"role": "system", "content": system_prompt}],
         "step": 0,
         "status": "running",
         "pending_action": None,
@@ -66,6 +66,8 @@ class StatefulAgent:
         registry=None,
         state_store=None,
         model=DEEPSEEK_MODEL,
+        tool_schemas=None,
+        system_prompt=SYSTEM_PROMPT,
     ):
         api_key = get_api_key()
         if client is None and not api_key:
@@ -74,6 +76,8 @@ class StatefulAgent:
         self.registry = registry or ToolRegistry()
         self.state_store = state_store or StateStore()
         self.model = model
+        self.tool_schemas = TOOL_SCHEMAS if tool_schemas is None else tool_schemas
+        self.system_prompt = system_prompt
 
     @staticmethod
     def _result(state):
@@ -105,7 +109,10 @@ class StatefulAgent:
         if state and state["status"] == "running":
             raise AgentError("当前会话有未完成任务，不能直接加入新问题")
         if state is None:
-            state = _new_state(StateStore.validate_session_id(session_id))
+            state = _new_state(
+                StateStore.validate_session_id(session_id),
+                system_prompt=self.system_prompt,
+            )
         else:
             state.update(
                 {
@@ -204,7 +211,7 @@ class StatefulAgent:
             response = self.client.chat.completions.create(
                 model=self.model,
                 messages=state["messages"],
-                tools=TOOL_SCHEMAS,
+                tools=self.tool_schemas,
                 tool_choice="auto",
                 temperature=0.0,
                 max_tokens=1000,

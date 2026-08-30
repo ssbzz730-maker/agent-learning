@@ -72,7 +72,9 @@ class ToolRegistry:
     CONFIRMATION_REQUIRED = {"create_ticket"}
 
     def __init__(self, knowledge_base=None, ticket_store=None):
-        self.knowledge_base = knowledge_base or KnowledgeBase()
+        # 延迟加载知识库，使后续课程可以复用计算器和写工具，
+        # 而不必初始化第1课的简单检索器。
+        self.knowledge_base = knowledge_base
         self.ticket_store = ticket_store or TicketStore()
 
     def requires_confirmation(self, name):
@@ -141,6 +143,8 @@ class ToolRegistry:
         if name == "calculator":
             return {"result": calculate(arguments["expression"]), "success": True}
         if name == "search_knowledge_base":
+            if self.knowledge_base is None:
+                self.knowledge_base = KnowledgeBase()
             results = self.knowledge_base.search(
                 arguments["query"], arguments.get("top_k", 3)
             )

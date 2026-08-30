@@ -15,3 +15,6 @@ htmlcov/
 # 后续课程生成的本地状态和模拟外部数据
 agent_states/
 tickets/
+.model-cache/
+.reranker-cache/
+rag_database/

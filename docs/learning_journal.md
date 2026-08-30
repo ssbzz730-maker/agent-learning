@@ -33,7 +33,7 @@
 
 详细复习见 [RAG 核心概念](rag_core_concepts.md)。
 
-### Agent 阶段：第 1、2 课已完成
+### Agent 阶段：第 1、2、3 课已完成
 
 当前已经完成原生 Tool Calling Agent，能够解释：
 
@@ -50,6 +50,8 @@
 - 写工具执行前保存 `pending_action` 并等待人工确认。
 - 用户确认后恢复控制循环，拒绝后不执行写操作。
 - 使用重复调用检测和幂等键共同防止重复写入。
+- 把混合检索、RRF、可选 Reranker 和父块取回封装成只读 RAG 工具。
+- 让 Agent 在检索证据后继续调用计算器，并在答案中保留证据编号和来源。
 
 ```text
 用户任务
@@ -171,11 +173,10 @@ Writing objects: 100%          ≠ 远程分支一定更新成功
 
 ## 下一步课程计划
 
-1. 把已经掌握的混合检索 RAG 封装为 Agent 工具。
-2. 学习 LangChain 的模型、Prompt、Tool 和 Runnable 抽象。
-3. 学习 LangGraph 的状态图、条件边和 Checkpoint。
-4. 增加 Agent 评估、日志、超时、重试和可观测性。
-5. 使用 FastAPI、流式输出和 Docker 完成可部署项目。
+1. 学习 LangChain 的模型、Prompt、Tool 和 Runnable 抽象。
+2. 学习 LangGraph 的状态图、条件边和 Checkpoint。
+3. 增加 Agent 评估、日志、超时、重试和可观测性。
+4. 使用 FastAPI、流式输出和 Docker 完成可部署项目。
 
 ## 日志维护规则
 

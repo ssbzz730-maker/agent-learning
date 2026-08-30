@@ -1,0 +1,5 @@
+# 第3课运行时依赖。基础离线测试只需 requirements.txt。
+sentence-transformers>=3.0,<6
+chromadb>=1.0,<2
+pypdf>=6.0,<7
+python-docx>=1.2,<2
