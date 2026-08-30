@@ -7,7 +7,7 @@
 | 课程 | 内容 | 状态 |
 |---|---|---|
 | [第1课](lesson_01_native_tool_calling/) | 原生 Tool Calling、安全计算器、知识库工具、控制循环、离线测试 | 已完成 |
-| [第2课](lesson_02_state_and_confirmation/) | 会话状态、暂停与恢复、高风险工具人工确认 | 设计完成，代码待实现 |
+| [第2课](lesson_02_state_and_confirmation/) | 会话状态、暂停与恢复、高风险工具人工确认、幂等写入 | 已完成 |
 | 第3课 | 把完整混合检索 RAG 接入 Agent | 待学习 |
 | 第4课 | LangChain 基础：模型、Prompt、Tool、Runnable | 待学习 |
 | 第5课 | LangGraph：StateGraph、条件边、Checkpoint | 待学习 |

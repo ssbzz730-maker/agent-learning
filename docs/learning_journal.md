@@ -1,6 +1,6 @@
 # RAG 与 Agent 学习日志
 
-> 最后更新：2026-08-29
+> 最后更新：2026-08-30
 > 云端仓库：<https://github.com/ssbzz730-maker/agent-learning>
 
 这份日志用于跨设备查看学习记录。代码可以由 AI 辅助完成，但学习目标是能够解释系统的数据流、状态变化、安全边界和故障位置。
@@ -33,7 +33,7 @@
 
 详细复习见 [RAG 核心概念](rag_core_concepts.md)。
 
-### Agent 阶段：第 1 课已完成
+### Agent 阶段：第 1、2 课已完成
 
 当前已经完成原生 Tool Calling Agent，能够解释：
 
@@ -46,6 +46,10 @@
 - 安全计算器为什么使用 AST 白名单而不是 `eval()`。
 - 如何用假模型完成不调用真实 API 的离线测试。
 - RAG 可以作为 Agent 的一个只读知识工具。
+- 使用 `session_id` 隔离并持久化不同会话。
+- 写工具执行前保存 `pending_action` 并等待人工确认。
+- 用户确认后恢复控制循环，拒绝后不执行写操作。
+- 使用重复调用检测和幂等键共同防止重复写入。
 
 ```text
 用户任务
@@ -167,12 +171,11 @@ Writing objects: 100%          ≠ 远程分支一定更新成功
 
 ## 下一步课程计划
 
-1. 实现第 2 课：Agent 状态、暂停、恢复和人工确认。
-2. 把已经掌握的混合检索 RAG 封装为 Agent 工具。
-3. 学习 LangChain 的模型、Prompt、Tool 和 Runnable 抽象。
-4. 学习 LangGraph 的状态图、条件边和 Checkpoint。
-5. 增加 Agent 评估、日志、超时、重试和可观测性。
-6. 使用 FastAPI、流式输出和 Docker 完成可部署项目。
+1. 把已经掌握的混合检索 RAG 封装为 Agent 工具。
+2. 学习 LangChain 的模型、Prompt、Tool 和 Runnable 抽象。
+3. 学习 LangGraph 的状态图、条件边和 Checkpoint。
+4. 增加 Agent 评估、日志、超时、重试和可观测性。
+5. 使用 FastAPI、流式输出和 Docker 完成可部署项目。
 
 ## 日志维护规则
 
