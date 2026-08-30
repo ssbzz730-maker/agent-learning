@@ -76,3 +76,19 @@ Agent还可能在检索后调用计算器、比较数据或创建工单。RAG工
 ## 为什么第3课要给StatefulAgent注入tool_schemas
 
 第2课和第3课的控制循环相同，但模型能看到的工具不同。把Schema作为构造参数注入，可以复用暂停、恢复和确认机制，同时把简单知识库工具替换成完整RAG工具，而不复制整份控制器代码。
+
+## prompt竖线model竖线parser是什么意思
+
+`|`是Runnable组合运算符：前一个组件的输出成为后一个组件的输入。Prompt把字典变成消息，模型把消息变成`AIMessage`，Parser再把`AIMessage`变成普通字符串。
+
+## invoke、batch和stream有什么区别
+
+`invoke()`处理一个输入并返回完整结果；`batch()`处理多个输入；`stream()`逐块产生结果，适合边生成边显示。它们共享同一套Runnable接口。
+
+## 有了LangChain的args_schema为什么还要校验参数
+
+Schema主要约束字段形状并帮助模型正确传参，不能证明参数内容安全。计算器仍需AST白名单，文件和写入工具仍需路径、权限、业务规则及人工确认。
+
+## LangChain是不是自动拥有会话状态
+
+不是。基础Runnable只负责一次数据传递。历史消息需要显式作为输入或由外部存储提供；暂停、恢复、Checkpoint和图状态将在LangGraph课程中实现。
