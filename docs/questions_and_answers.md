@@ -92,3 +92,15 @@ Schema主要约束字段形状并帮助模型正确传参，不能证明参数�
 ## LangChain是不是自动拥有会话状态
 
 不是。基础Runnable只负责一次数据传递。历史消息需要显式作为输入或由外部存储提供；暂停、恢复、Checkpoint和图状态将在LangGraph课程中实现。
+
+## Tool绑定是不是等于Tool执行
+
+不是。`model.bind_tools(tools)`只把工具名称、描述和参数Schema交给模型。模型随后可能在`AIMessage.tool_calls`中请求某个工具；Python程序仍需校验并调用真实Tool，再用具有相同`tool_call_id`的`ToolMessage`把结果返回模型。
+
+## 为什么第4课仍然手写Agent循环
+
+手动循环可以直接看到绑定、选择、执行、回传和再次生成五个阶段。第5课再把相同流程改写成LangGraph节点和条件边，才能明确框架减少了哪些控制代码，而不是只会调用封装接口。
+
+## 为什么ToolMessage必须带tool_call_id
+
+模型一次可能请求多个工具。`tool_call_id`把每个执行结果与原始请求一一对应；缺少或对应错误时，模型API无法可靠判断哪个结果属于哪个工具调用。

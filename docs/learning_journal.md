@@ -54,6 +54,8 @@
 - 让 Agent 在检索证据后继续调用计算器，并在答案中保留证据编号和来源。
 - 使用 LangChain 的 Prompt、Runnable、Parser 和 Tool 标准化已有组件。
 - 理解 `invoke`、`batch`、`stream` 以及每一段管道的输入输出类型。
+- 手动完成 `bind_tools → tool_calls → Tool.invoke → ToolMessage → 再次调用模型`。
+- 使用 `max_steps` 限制工具循环，并把未知工具或执行错误如实返回模型。
 
 ```text
 用户任务
