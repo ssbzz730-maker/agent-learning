@@ -33,7 +33,7 @@
 
 详细复习见 [RAG 核心概念](rag_core_concepts.md)。
 
-### Agent 阶段：第 1、2、3、4 课已完成
+### Agent 阶段：第 1、2、3、4、5 课已完成
 
 当前已经完成原生 Tool Calling Agent，能够解释：
 
@@ -56,6 +56,8 @@
 - 理解 `invoke`、`batch`、`stream` 以及每一段管道的输入输出类型。
 - 手动完成 `bind_tools → tool_calls → Tool.invoke → ToolMessage → 再次调用模型`。
 - 使用 `max_steps` 限制工具循环，并把未知工具或执行错误如实返回模型。
+- 使用LangGraph把模型、工具、确认和终止逻辑拆成节点与条件边。
+- 使用SQLite Checkpoint和`thread_id`实现会话隔离、重启恢复及人工确认中断。
 
 ```text
 用户任务
@@ -177,9 +179,8 @@ Writing objects: 100%          ≠ 远程分支一定更新成功
 
 ## 下一步课程计划
 
-1. 学习 LangGraph 的状态图、条件边和 Checkpoint。
-2. 增加 Agent 评估、日志、超时、重试和可观测性。
-3. 使用 FastAPI、流式输出和 Docker 完成可部署项目。
+1. 增加 Agent 评估、日志、超时、重试和可观测性。
+2. 使用 FastAPI、流式输出和 Docker 完成可部署项目。
 
 ## 日志维护规则
 

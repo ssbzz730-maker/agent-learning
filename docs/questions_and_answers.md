@@ -104,3 +104,19 @@ Schema主要约束字段形状并帮助模型正确传参，不能证明参数�
 ## 为什么ToolMessage必须带tool_call_id
 
 模型一次可能请求多个工具。`tool_call_id`把每个执行结果与原始请求一一对应；缺少或对应错误时，模型API无法可靠判断哪个结果属于哪个工具调用。
+
+## LangGraph的compile为什么不等于运行
+
+`compile()`检查节点和边并生成可运行图；它不会调用节点。`invoke()`、`stream()`或`Command(resume=...)`才会让状态沿图流动并执行节点函数。
+
+## Reducer解决什么问题
+
+多个节点都可能更新同一个State字段。Reducer规定新旧值怎样合并：`add_messages`追加或更新消息，`operator.add`拼接列表；没有Reducer时新值直接覆盖旧值。
+
+## Checkpoint和thread_id是什么关系
+
+Checkpointer负责保存状态，`thread_id`是查找某段会话状态的键。相同ID继续旧会话，不同ID相互隔离。SQLite Checkpointer还能在进程重启后恢复；普通内存字典做不到。
+
+## interrupt为什么不会提前执行写工具
+
+条件边先把风险调用送到`approval`节点。`interrupt()`保存当前Checkpoint并立即暂停，图还没有进入真实`tools`节点；只有使用原`thread_id`执行`Command(resume=True)`后，图才会沿同意分支执行写工具。

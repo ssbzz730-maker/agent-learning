@@ -18,3 +18,4 @@ tickets/
 .model-cache/
 .reranker-cache/
 rag_database/
+runtime/
