@@ -1,0 +1,12 @@
+.git
+.github
+.venv
+**/__pycache__
+**/*.pyc
+**/runtime
+**/.model-cache
+**/.reranker-cache
+**/rag_database
+.env
+.env.*
+!.env.example

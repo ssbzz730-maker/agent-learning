@@ -1,0 +1,16 @@
+services:
+  agent-web:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      DEEPSEEK_API_KEY: ${DEEPSEEK_API_KEY}
+      ENABLE_RAG: "false"
+      MODEL_TIMEOUT: "30"
+      MODEL_MAX_ATTEMPTS: "3"
+    volumes:
+      - agent-runtime:/app/runtime
+    restart: unless-stopped
+
+volumes:
+  agent-runtime:
