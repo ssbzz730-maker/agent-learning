@@ -27,6 +27,7 @@ class GraphAgentResult:
     pending_action: dict | None
     messages: list
     model_calls: int
+    request_id: str | None = None
 
 
 class LangGraphAgent:

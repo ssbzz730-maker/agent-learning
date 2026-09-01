@@ -11,7 +11,7 @@
 | [第3课](lesson_03_rag_tool/) | 混合检索、RRF、Reranker、父块证据接入 Agent | 已完成 |
 | [第4课](lesson_04_langchain_basics/) | LangChain：Runnable、Tool绑定、手动工具循环、RAG适配 | 已完成 |
 | [第5课](lesson_05_langgraph_agent/) | LangGraph：状态图、条件边、SQLite Checkpoint、人工确认 | 已完成 |
-| 第6课 | Agent 评估、日志、超时、重试和可观测性 | 待学习 |
+| [第6课](lesson_06_agent_quality/) | 评估、JSONL日志、Token、超时、重试和可观测性 | 已完成 |
 | 第7课 | FastAPI、流式网页和 Docker 部署 | 待学习 |
 
 ## 仓库结构
@@ -23,6 +23,7 @@ native_agent_project/
 ├── lesson_03_rag_tool/
 ├── lesson_04_langchain_basics/
 ├── lesson_05_langgraph_agent/
+├── lesson_06_agent_quality/
 ├── docs/
 │   ├── rag_core_concepts.md            # RAG核心概念复习
 │   ├── agent_core_concepts.md          # Agent核心运行机制

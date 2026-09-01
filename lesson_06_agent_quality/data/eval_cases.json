@@ -1,0 +1,26 @@
+[
+  {
+    "id": "travel-001",
+    "question": "上海出差住三晚最多报销多少？",
+    "expected_tools": ["search_company_documents", "calculator"],
+    "expected_sources": ["差旅管理制度.pdf"],
+    "expected_keywords": ["1500"],
+    "should_refuse": false
+  },
+  {
+    "id": "meeting-001",
+    "question": "会议室取消和释放规则是什么？",
+    "expected_tools": ["search_company_documents"],
+    "expected_sources": ["办公场所管理.pdf"],
+    "expected_keywords": ["取消"],
+    "should_refuse": false
+  },
+  {
+    "id": "unknown-001",
+    "question": "公司是否报销私人游艇？",
+    "expected_tools": ["search_company_documents"],
+    "expected_sources": [],
+    "expected_keywords": [],
+    "should_refuse": true
+  }
+]

@@ -1,0 +1,35 @@
+[
+  {
+    "id": "travel-001",
+    "actual_tools": ["search_company_documents", "calculator"],
+    "retrieved_sources": ["差旅管理制度.pdf", "办公场所管理.pdf"],
+    "available_evidence_ids": ["E1", "E2"],
+    "citations": ["E1"],
+    "answer": "根据[E1]，三晚最多报销1500元。",
+    "refused": false,
+    "latency_ms": 2100,
+    "total_tokens": 860
+  },
+  {
+    "id": "meeting-001",
+    "actual_tools": ["search_company_documents"],
+    "retrieved_sources": ["办公场所管理.pdf"],
+    "available_evidence_ids": ["E1"],
+    "citations": ["E1"],
+    "answer": "根据[E1]，会议取消后会按制度释放资源。",
+    "refused": false,
+    "latency_ms": 1500,
+    "total_tokens": 620
+  },
+  {
+    "id": "unknown-001",
+    "actual_tools": ["search_company_documents"],
+    "retrieved_sources": [],
+    "available_evidence_ids": [],
+    "citations": [],
+    "answer": "知识库中没有相关规定，无法确认是否可以报销。",
+    "refused": true,
+    "latency_ms": 1300,
+    "total_tokens": 510
+  }
+]
