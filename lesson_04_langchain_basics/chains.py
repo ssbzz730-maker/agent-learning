@@ -23,7 +23,7 @@ def normalize_input(payload):
     return {"question": question.strip()}
 
 
-def create_deepseek_model(timeout=30.0, max_retries=2):
+def create_deepseek_model(timeout=30.0, max_retries=2, streaming=False):
     """创建 DeepSeek 的 OpenAI 兼容 LangChain 模型对象。"""
 
     api_key = get_api_key()
@@ -37,6 +37,7 @@ def create_deepseek_model(timeout=30.0, max_retries=2):
         max_tokens=1000,
         timeout=timeout,
         max_retries=max_retries,
+        streaming=streaming,
     )
 
 

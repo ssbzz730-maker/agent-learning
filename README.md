@@ -13,6 +13,7 @@
 | [第5课](lesson_05_langgraph_agent/) | LangGraph：状态图、条件边、SQLite Checkpoint、人工确认 | 已完成 |
 | [第6课](lesson_06_agent_quality/) | 评估、JSONL日志、Token、超时、重试和可观测性 | 已完成 |
 | [第7课](lesson_07_fastapi_deployment/) | FastAPI、SSE中文网页、人工确认API和Docker | 已完成 |
+| [第8课](lesson_08_streaming_agent/) | LangGraph真实事件流、Token输出、心跳和断线取消 | 已完成 |
 
 ## 仓库结构
 
@@ -25,6 +26,7 @@ native_agent_project/
 ├── lesson_05_langgraph_agent/
 ├── lesson_06_agent_quality/
 ├── lesson_07_fastapi_deployment/
+├── lesson_08_streaming_agent/
 ├── docs/
 │   ├── rag_core_concepts.md            # RAG核心概念复习
 │   ├── agent_core_concepts.md          # Agent核心运行机制

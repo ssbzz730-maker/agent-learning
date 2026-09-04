@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>流式企业知识与工单 Agent</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">LANGGRAPH LIVE WORKSPACE</p>
+        <h1>流式企业知识与工单 Agent</h1>
+      </div>
+      <div id="health" class="badge">检查服务…</div>
+    </header>
+
+    <section class="workspace">
+      <aside class="sidebar">
+        <label for="threadId">会话 ID</label>
+        <div class="row">
+          <input id="threadId" maxlength="128" autocomplete="off">
+          <button id="newThread" class="secondary" type="button">新建</button>
+        </div>
+        <button id="loadSession" class="secondary wide" type="button">
+          读取 Checkpoint
+        </button>
+
+        <div class="trace-card">
+          <span>当前请求</span>
+          <dl>
+            <dt>request_id</dt><dd id="requestId">—</dd>
+            <dt>状态</dt><dd id="requestStatus">等待输入</dd>
+            <dt>模型调用</dt><dd id="modelCalls">0</dd>
+          </dl>
+        </div>
+
+        <div class="activity-card">
+          <div class="activity-title">
+            <span>实时轨迹</span>
+            <button id="clearTrace" class="link-button" type="button">清空</button>
+          </div>
+          <ol id="activity" aria-live="polite"></ol>
+        </div>
+      </aside>
+
+      <section class="chat-panel">
+        <div id="messages" class="messages" aria-live="polite">
+          <article class="message assistant">
+            <div class="avatar">A</div>
+            <div class="bubble">你好。回答会逐段显示，工具和节点状态会出现在左侧轨迹中。</div>
+          </article>
+        </div>
+
+        <div id="approval" class="approval hidden">
+          <div>
+            <strong>需要人工确认</strong>
+            <p id="approvalText"></p>
+          </div>
+          <div class="approval-actions">
+            <button id="reject" class="danger" type="button">拒绝</button>
+            <button id="approve" type="button">确认执行</button>
+          </div>
+        </div>
+
+        <form id="chatForm" class="composer">
+          <textarea id="question" rows="2" maxlength="4000"
+            placeholder="输入问题，例如：请使用计算器计算125乘0.8" required></textarea>
+          <div class="composer-actions">
+            <button id="stop" class="danger hidden" type="button">停止</button>
+            <button id="send" type="submit">发送</button>
+          </div>
+        </form>
+        <p class="footnote">
+          Token、工具和节点事件来自真实 LangGraph 运行流；写操作仍需人工确认。
+        </p>
+      </section>
+    </section>
+  </main>
+  <script src="/static/app.js" defer></script>
+</body>
+</html>
